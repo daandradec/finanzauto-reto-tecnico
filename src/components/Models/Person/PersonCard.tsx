@@ -1,0 +1,26 @@
+import type { PersonModel } from "@/models/Person";
+import Link from "next/link";
+
+type Props = {
+    person: PersonModel;
+    deletePerson: (id: string) => Promise<void>
+}
+
+function PersonCard({ person, deletePerson }: Props) {
+  return (
+    <div className="flex border rounded-2xl border-[#EAEAEA] bg-[#f9f9f9] hover:bg-[#f6f6f6] hover:cursor-pointer">
+        <img src={person.picture} alt="profile" className="h-[92px] object-cover rounded-tl-2xl rounded-bl-2xl"/>
+        <div className="grow flex items-center px-6 gap-4">
+            <div className="mr-auto">
+                <p className="font-semibold uppercase">{ person.title } </p>
+                <p className="text-lg text-stone-600">{ person.firstName } { person.lastName }</p>
+            </div>
+            <Link href={`/person/${person.id}`} className="px-2 bg-violet-400 hover:bg-violet-500 text-white">Ver</Link>
+            <Link href={`/person/update/${person.id}`} className="px-4 py-2 bg-blue-400 hover:bg-blue-500 text-white">Actualizar</Link>
+            <button onClick={(e) => {deletePerson(person.id)}} className="px-4 py-2 bg-red-400 hover:bg-red-500 text-white">Borrar</button>
+        </div>
+    </div>
+  )
+}
+
+export default PersonCard
