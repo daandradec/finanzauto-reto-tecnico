@@ -1,6 +1,11 @@
+"use client";
+/* IMPORTACIONES DE REACT */
 import React from "react";
+
+/* IMPORTACION DE TIPOS */
 import type { PersonModel } from "@/models/Person";
 
+/* PROPS DEL COMPONENTE */
 type Props = {
     modalOpen: boolean;
     showModal: React.Dispatch<React.SetStateAction<boolean>>;
@@ -13,18 +18,21 @@ function Modal({ modalOpen, showModal, createPerson }: Props) {
         ? "modal block"
         : "modal hidden";
 
+
     /* FUNCION PARA EL MANEJO DEL SUBMIT DEL FORMULARIO  */
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         /* PREVENIR EL EVENTO ORIGINAL DE SUBMIT */
         e.preventDefault();
 
         /* CREAR LOS OBJETOS DE ACCESO A LOS CAMPOS DEL FORMULARIO */
-        const form = new FormData(e.target as HTMLFormElement); // alternative 1 o tambien podiamos haber creado una interface que extenderia htmlFormElement { name:string, country: string } y poder acceder con form.name
+        const form = new FormData(e.target as HTMLFormElement); 
         const requestInput = Object.fromEntries(form) as Partial<PersonModel & {email: string}>;
         
+        /* SI NO TIENEN INFORMACIÓN NO ACEPTE */
         if(!requestInput.firstName || !requestInput.lastName || !requestInput.email)
             return;
 
+        /* CREAR LA PERSONA */
         createPerson(requestInput).then(() => {
             showModal(false);
         });

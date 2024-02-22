@@ -1,8 +1,11 @@
 /* IMPORTACIÓN DE TIPOS */
-import axios, { AxiosRequestConfig } from "axios";
 import type { PersonModel } from "../types";
-import { v4 as uuid } from 'uuid';
 
+/* IMPORTACIÓN DE LIBRERIAS */
+import { v4 as uuid } from 'uuid';
+import axios, { AxiosRequestConfig } from "axios";
+
+/* CABECERAS GENERALES PARA ELREQUEST CON EL TOKEN BEARER */
 const headers: RequestInit = { headers: {
     Authorization: `Bearer ${process.env.NEXT_PUBLIC_BEARER}`,        
 }} as RequestInit
@@ -21,6 +24,7 @@ export const getOnlyPerson = (id: string): Promise<PersonModel> => {
     .then((data) => data);
 }
 
+/* FETCH PARA CREAR UNA PERSONA EN DUMMY API IO */
 export const createPerson = async (person: Partial<PersonModel & {email: string}>) => {
     try{
         const data = await axios.post<PersonModel, PersonModel>(`${process.env.NEXT_PUBLIC_DUMMYAPIIO_HOST}/user/create`, person as Object, {headers:{"app-id": process.env.NEXT_PUBLIC_DUMMYAPIIO_API_KEY}} as AxiosRequestConfig);
@@ -30,6 +34,7 @@ export const createPerson = async (person: Partial<PersonModel & {email: string}
     }    
 }
 
+/* FETCH PARA ACTUALIZAR UNA PERSONA EN DUMMY API IO */
 export const updatePerson = async (person: PersonModel) => {
     try{
         await axios.put<PersonModel, PersonModel>(`${process.env.NEXT_PUBLIC_DUMMYAPIIO_HOST}/user/update`, person as Object, {headers:{"app-id": process.env.NEXT_PUBLIC_DUMMYAPIIO_API_KEY}} as AxiosRequestConfig);
@@ -39,7 +44,7 @@ export const updatePerson = async (person: PersonModel) => {
     }
 }
 
-
+/* FETCH PARA BORRAR UNA PERSONA EN DUMMY API IO */
 export const deletePerson = (id: string): Promise<string> => {
     return fetch(process.env.NEXT_PUBLIC_URL + `/api/person/${id}`, {...headers, method: 'DELETE'})
     .then((response) => response.json())

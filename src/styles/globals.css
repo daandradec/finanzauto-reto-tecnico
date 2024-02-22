@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ESTILOS PARA EL BACKGRUOND DEL MODAL */
 .modal {
     position: fixed;
     top: 0;
@@ -11,6 +12,7 @@
     background: rgba(0,0,0, 0.5) 
 }
 
+/* ESTILOS PARA EL POSICIONAMIENTO DEL MODALL */
 .modal-main {
     position:fixed;    
     width: auto;
@@ -20,16 +22,18 @@
     transform: translate(-50%,-50%);
 }
 
+/* INPUTS DE HTML CON BORDE GRIS SUAVE */
 input{
     display:block;
     border: 1px solid #d1d5db;
 }
-
+/* CLASE CONTENEDORA PARA TRABAJAR CON UN 70% DEL ANCHO NO CAMBIABLE SEGUN EL TAMAÑO DE LA PANTALLA */
 .container{    
     width:1320px;
     margin: 0 auto;
 }
 
+/* MEDIAS QUERYS PARA ACTUALIZAR EL VALOR DE LAS CLASES SEGUN EL TAMAÑO DE LA PANTALLA */
 @media(max-width:575px){ .container{ width: 100%;} }
 @media(min-width:576px){ .container{ width: 540px;} }
 @media(min-width:768px){ .container{ width: 720px;} }

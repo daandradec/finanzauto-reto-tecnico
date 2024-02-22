@@ -1,5 +1,5 @@
-import React from 'react'
 
+/* BARRA DE NAVGACIÓN SUPERIOR DE LA WEB */
 function Navbar() {
   return (
     <nav className='flex justify-center items-center py-6 border-b border-[#EAEAEA]'>

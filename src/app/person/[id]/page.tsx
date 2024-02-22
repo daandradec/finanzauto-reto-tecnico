@@ -1,7 +1,9 @@
+/* IMPORTACION DE COMPONENTES */
 import ShowPerson from "@/components/Views/ShowPerson/ShowPerson";
 
-async function page({ params }: { params: { id: string } }) {
-    return <ShowPerson params={params}/>
+/* PAGINA DE MOSTRAR PERSONA */
+async function page() {
+    return <ShowPerson/>
 }
 
 export default page;
