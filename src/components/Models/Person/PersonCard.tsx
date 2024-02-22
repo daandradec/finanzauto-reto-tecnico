@@ -15,7 +15,7 @@ type Props = {
 
 /* TARJETA DE PERSONA EN HORIZONTAL */
 function PersonCard({ person, deletePerson }: Props) {
-    
+    /* FUNCIÓN PARA EL MANEJO DEL EVENTO DE ELIMINAR */
     const handleDelete = (_e: React.MouseEvent) => {
         if(confirm("Seguro que desea borrar"))
             deletePerson(person.id);

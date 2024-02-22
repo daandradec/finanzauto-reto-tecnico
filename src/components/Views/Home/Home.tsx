@@ -21,6 +21,7 @@ function Home() {
     const [modalOpen, showModal] = useState<boolean>(false);
     const {persons, deletePerson, createPerson} = useDatabase();
 
+    /* FILTRAR LAS PERSONAS */
     const personsFiltered = useMemo(() => {
         if(search.length){            
             return [...persons].map((person: PersonModel) => ({...person, fullName: person.firstName + person.lastName})).filter((person: PersonModel & {fullName: string}) => person.fullName.toLowerCase().includes(search.toLocaleLowerCase().trim()));

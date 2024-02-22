@@ -2,7 +2,9 @@
 export function translateTitle(title: string){
     if(title === "mr")
         return "sr"
-    else if(["mrs", "ms", "miss"].includes(title))
+    else if(["mrs", "ms"].includes(title))
         return "sra"
+    else if(["miss","mss"].includes(title))
+        return "srta"
     return title;
 }
