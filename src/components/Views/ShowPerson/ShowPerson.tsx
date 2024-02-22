@@ -1,7 +1,5 @@
 import Link from "next/link";
-import PersonCardVertical from "@/components/Models/Person/PersonCardVertical";
 import * as Person from "@/models/Person";
-import { Suspense } from "react";
 import ShowPersonClient from "./ShowPersonClient";
 
 async function ShowPerson({ params }: { params: { id: string } }) {
